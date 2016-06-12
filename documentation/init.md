@@ -1,7 +1,7 @@
 # `init` function
 
 This function is called whenever the structure of the graph or the source code
-of a block changes. It takes two arguments: a context and helpers:
+of a [block](./block.md) changes. It takes two arguments: a context and helpers:
 
 ```Javascript
 export const init =
