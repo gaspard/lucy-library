@@ -38,7 +38,7 @@ node is the position of the block in the processing graph). For example:
 [ 3D.cuboid ]
 ```
 
-In the graph above, if `3D.renderer` init returns the renderer, like this:
+In the graph above, if [3D.renderer](../components/3D.renderer) init returns the renderer, like this:
 
 ```Javascript
 export const init =
@@ -51,7 +51,7 @@ export const init =
 }
 ```
 
-The  `3D.scene` and `3D.cuboid` will have access to it in their `init` function:
+The [3D.scene](../components/3D.scene.ts) and [3D.cuboid](../components/3D.cuboid.ts) will have access to it in their `init` function:
 
 ```Javascript
 let renderer
