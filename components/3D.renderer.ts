@@ -1,10 +1,3 @@
-/* This block prepares the rendering context for
- * THREE.js based projects. Context changes:
- *
- *   * renderer  WebGLRenderer
- *   * camera    default camera at (0,0,500)
- *   * screen    screen position, width and height
- */
 export const init =
 ( ctx, { cache, require, detached } ) => {
   const THREE = require ( 'THREE' )
@@ -32,7 +25,8 @@ export const init =
 }
 
 export const meta =
-{ init: [ {}
+{ description: "Prepare the rendering context for THREE.js."
+, init: [ {}
         , { renderer: 'THREE.WebGLRenderer'
           , camera: 'THREE.Camera'
           , screen: 'screen.size'

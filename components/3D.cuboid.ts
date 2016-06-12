@@ -1,36 +1,28 @@
-/* This block prepares a 3D rendering scene. Context:
- * 
- *   * mesh     THREE.BoxGeometry
- */
-let mesh
-
 export const init =
-( { cache, require } ) => {
-  if ( !cache.mesh ) {
+( ctx, { require, cache, detached } ) => {
+  if ( !cache.object3D ) {
     const THREE = require ( 'THREE' )
     const geometry = new THREE.BoxGeometry
     ( 200, 200, 200 )
     const material = new THREE.MeshBasicMaterial
     ( { color: 0xff0000, wireframe: true } )
-    
-    cache.mesh = new THREE.Mesh ( geometry, material )
+
+    cache.object3D = new THREE.Mesh ( geometry, material )
+    ctx.object3D.add ( cache.object3D )
   }
-  mesh = cache.mesh
+
+  const object3D = cache.object3D
+  if ( detached ) {
+    if ( object3D.parent ) {
+      object3D.parent.remove ( object3D )
+    }
+  }
+  return { object3D }
 }
 
-export const render =
-( ctx, geom, mat ) => {
-  if ( ctx.scene ) {
-    // FIXME: how to prevent adding mesh more then
-    // once ?
-    ctx.scene.add ( mesh )
-  }
-  const g = geom ()
-  comst m = mat ()
-  if ( g ) {
-    mesh.geometry = g
-  }
-  if ( m ) {
-    mesh.material = m
-  }
+export const meta =
+{ description: "Create a 3D cube."
+, init: [ { object3D: 'THREE.Object3D' }
+        , { object3D: 'THREE.Object3D' }
+        ]
 }
