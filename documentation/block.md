@@ -34,6 +34,7 @@ node is the position of the block in the processing graph). For example:
 ```ascii
 [ main        ]
 [ 3D.renderer ]
+[ animate   ]
 [ 3D.scene  ]
 [ 3D.cuboid ]
 ```
@@ -51,21 +52,20 @@ export const init =
 }
 ```
 
-The [3D.scene](../components/3D.scene.ts) and [3D.cuboid](../components/3D.cuboid.ts) will have access to it in their `init` function:
+The [3D.scene](../components/3D.scene.ts#L9) will have access to it in its `init` function:
 
 ```Javascript
-let renderer
 export const init =
-( ctx, { cache, require, detached } ) => {
-  const THREE = require ( 'three' )
-  // We capture the renderer in a module variable so that we can use it
-  // in the render function.
+( ctx, { cache, require } ) => {
   renderer = ctx.renderer
+  camera = ctx.camera
 
-  if ( !cache.scene ) {
-    cache.scene = //... create some 3D scene
+  const THREE = require ( 'THREE' )
+  if ( !cache.object3D ) {
+    cache.object3D = new THREE.Scene ()
   }
-  return { object3D: cache.scene }
+  object3D = cache.object3D
+  return { object3D }
 }
 ```
 

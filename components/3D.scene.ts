@@ -1,19 +1,30 @@
 /* This block prepares a 3D rendering scene. Context:
- * 
- *   * scene     THREE.Scene
+ *
+ *   * object3D     THREE.Scene
  */
-let scene
+let object3D, renderer, camera
 
 export const init =
-( { cache, require } ) => {
-  if ( !cache.scene ) {
-    const THREE = require ( 'THREE' )
-    cache.scene = new THREE.Scene ()
+( ctx, { cache, require } ) => {
+  renderer = ctx.renderer
+  camera = ctx.camera
+
+  const THREE = require ( 'THREE' )
+  if ( !cache.object3D ) {
+    cache.object3D = new THREE.Scene ()
   }
-  scene = cache.scene
+  object3D = cache.object3D
+  return { object3D }
 }
 
 export const render =
 ( ctx, child ) => {
-  child ( ctx.set ( { scene } ) )
+  child ()
+  renderer.render ( object3D, camera )
+}
+
+export const meta =
+{ init: [ { renderer: 'THREE.WebGLRenderer' }
+        , { object3D: 'THREE.Object3D' }
+        ]
 }
