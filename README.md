@@ -1,2 +1,6 @@
 # lucy-library
-Official block prototypes for Lucidity (common library for all users).
+
+Official components for Lucidity (common library for all users) and
+documentation on block editing.
+
+* [block](./documentation/block.md)
