@@ -22,8 +22,8 @@ export const init: lucy.Init =
 
   renderer.setSize ( screen.width, screen.height )
   const camera = new THREE.PerspectiveCamera
-  ( 75, screen.width / screen.height, 1, 10000 )
-  camera.position.z = 500
+  ( 60, screen.width / screen.height, 0.1, 100 )
+  camera.position.z = 2
 
   return { renderer, camera, screen }
 }
