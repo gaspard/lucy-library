@@ -4,12 +4,12 @@ Updates the children on each frame by calling their `update` function.
 
 Typical usage:
 
-```ascii
-[ three.WebGLRenderer ]
-[ lucy.Animate ]
-[ three.Scene ]
-[ three.Mesh ]
-```
+    [ [three.WebGLRenderer](three.WebGLRenderer.md) ]
+    [ [lucy.Animate](lucy.Animate.md) ]
+    [ [three.Scene](lucy.Scene.md) ]
+    [ [three.Mesh](three.Mesh) ]
+
+[source](lucy.Animate.ts)
 
 ## Provide
 

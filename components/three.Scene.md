@@ -1,15 +1,15 @@
-# three.WebGLRenderer
+# three.Scene
 
-Transforms the screen into a WebGL animation using [three.js](http://threejs.org).
+Creates a new [THREE.Scene](http://threejs.org/docs/#Reference/Objects/Scene) and renders it on every call to `update` using the current renderer and camera.
 
 Typical usage:
 
-```ascii
-[ three.WebGLRenderer ]
-[ lucy.Animate ]
-[ three.Scene ]
-[ three.Mesh ]
-```
+    [ [three.WebGLRenderer](three.WebGLRenderer.md) ]
+    [ [lucy.Animate](lucy.Animate.md) ]
+    [ [three.Scene](lucy.Scene.md) ]
+    [ [three.Mesh](three.Mesh) ]
+
+[source](three.Scene.ts)
 
 ## Provide
 
