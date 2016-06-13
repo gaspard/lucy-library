@@ -1,6 +1,6 @@
 # `meta` export
 
-You can (and should) export a meta object [blocks](block.md) to add type checking, a description and revision/author information. Here is an example of a `meta` export (from [three.Scene](../components/three.Scene.ts#L22)):
+You can (and should) export a meta object [blocks](block.md) to add type checking, a description and version/author information. Here is an example of a `meta` export (from [three.Scene](../components/three.Scene.ts#L22)):
 
 ```Javascript
 export const meta: lucy.Meta =
@@ -19,6 +19,11 @@ export const meta: lucy.Meta =
 * **tags**: This helps users find components in the library along with the description and provided context. All tags should be in lowercase.
 
 * **version**: A [semver](http://semver.org) version number to help trace a block's version in case of bugs. This is important to help trace bugs in complex script.
+
+* **author**: The name and email of the author. This information is removed from the block when extracted from the library so that the author information does not stick with modified versions of the file.
+
+* **origin**: Unique identifier for the block usually a domain name related to the source (or an email) followed by a slash and the original object name. For example, the origin for "lucy.Animate" is "lucidity.io/lucy.Animate". This helps give keep some credit to the original author and eventually find back what this block was before it got broken for example. This is automatically added by using the user's email, like this "some.user@some.domain/block.Name".
+
 
 ## Type checking
 

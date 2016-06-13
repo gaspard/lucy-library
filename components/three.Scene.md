@@ -4,10 +4,10 @@ Creates a new [THREE.Scene](http://threejs.org/docs/#Reference/Objects/Scene) an
 
 Typical usage:
 
-    [ [three.WebGLRenderer](three.WebGLRenderer.md) ]
-    [ [lucy.Animate](lucy.Animate.md) ]
-    [ [three.Scene](lucy.Scene.md) ]
-    [ [three.Mesh](three.Mesh) ]
+[ [three.WebGLRenderer](three.WebGLRenderer.md) ]
+[ [lucy.Animate](lucy.Animate.md) ]
+[ [three.Scene](lucy.Scene.md) ]
+[ [three.Mesh](three.Mesh) ]
 
 [source](three.Scene.ts)
 

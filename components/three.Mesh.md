@@ -4,10 +4,10 @@ Adds a new [THREE.Mesh](http://threejs.org/docs/#Reference/Objects/Mesh) to the 
 
 Typical usage:
 
-    [ [three.WebGLRenderer](three.WebGLRenderer.md) ]
-    [ [lucy.Animate](lucy.Animate.md) ]
-    [ [three.Scene](lucy.Scene.md) ]
-    [ [three.Mesh](three.Mesh) ]
+[ [three.WebGLRenderer](three.WebGLRenderer.md) ]
+[ [lucy.Animate](lucy.Animate.md) ]
+[ [three.Scene](lucy.Scene.md) ]
+[ [three.Mesh](three.Mesh) ]
 
 [source](three.Mesh.ts)
 
