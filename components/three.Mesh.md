@@ -15,6 +15,10 @@ Typical usage:
 
 * object3D: [THREE.Mesh](http://threejs.org/docs/#Reference/Objects/Mesh) as `THREE.Object3D`
 
+## Expect
+
+* object3D: [THREE.Object3D](http://threejs.org/docs/#Reference/Core/Object3D)
+
 ## Meta
 
     author: Gaspard Bucher <gaspard@lucidogen.io>

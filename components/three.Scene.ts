@@ -25,6 +25,8 @@ export const meta: lucy.Meta =
 { description: "Prepare and render a 3D rendering scene."
 , tags: [ '3D' , 'three.js', 'object3D', 'scene' ]
 , version: '1.0'
-, expect:  { renderer: 'THREE.WebGLRenderer' }
+, expect:  { renderer: 'THREE.WebGLRenderer'
+           , camera: 'THREE.Camera'
+           }
 , provide: { object3D: 'THREE.Object3D' }
 }
