@@ -44,5 +44,5 @@ export const meta: lucy.Meta =
 , provide: { time: 'lucy.Time'
            }
 , update: '()'
-, children: 'any' // special case where we handle children ourselves but do not type them.
+, children: 'all' // special case where we handle children ourselves but do not type them.
 }

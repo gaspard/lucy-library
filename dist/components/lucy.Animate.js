@@ -33,6 +33,8 @@ exports.meta = { description: "Runs the children's update functions on each fram
     tags: ['animation', 'time'],
     version: '1.0',
     provide: { time: 'lucy.Time'
-    }
+    },
+    update: '()',
+    children: 'any' // special case where we handle children ourselves but do not type them.
 };
 //# sourceMappingURL=lucy.Animate.js.map
