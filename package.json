@@ -1,0 +1,33 @@
+{
+  "name": "lucy-library",
+  "version": "0.1.0",
+  "description": "Official components for Lucidity library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucidogen/lucy-library.git"
+  },
+  "keywords": [
+    "lucidity",
+    "library",
+    "livecoding",
+    "webgl",
+    "ai",
+    "ml",
+    "javascript",
+    "editor",
+    "typescript"
+  ],
+  "author": "Gaspard Bucher <gaspard@lucidogen.io> (http://lucidogen.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucidogen/lucy-library/issues"
+  },
+  "homepage": "https://github.com/lucidogen/lucy-library#readme",
+  "devDependencies": {
+    "typescript": "^1.8.10"
+  }
+}

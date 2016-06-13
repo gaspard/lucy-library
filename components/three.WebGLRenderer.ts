@@ -1,15 +1,19 @@
-export const init =
-( ctx, { cache, require, detached } ) => {
+import { lucy } from '../types/lucy'
+import { lucy as ls } from '../types/lucy.Screen'
+
+export const init: lucy.Init =
+( { cache, require, detached } ) => {
   const THREE = require ( 'THREE' )
   const container = document.getElementById ( 'screen' )
-  const screen = container.getBoundingClientRect ()
+  const screen: ls.Screen = container.getBoundingClientRect ()
 
-  if (!cache.renderer) {
-    renderer = new THREE.WebGLRenderer ()
+  if ( !cache.renderer ) {
+    const renderer = new THREE.WebGLRenderer ()
     renderer.setSize ( screen.width, screen.height )
     container.appendChild ( renderer.domElement )
     cache.renderer = renderer
   }
+
   const renderer = cache.renderer
 
   if ( detached ) {
@@ -24,12 +28,12 @@ export const init =
   return { renderer, camera, screen }
 }
 
-export const meta =
+export const meta: lucy.Meta =
 { description: "Prepare the rendering context for THREE.js."
-, init: [ {}
-        , { renderer: 'THREE.WebGLRenderer'
-          , camera: 'THREE.Camera'
-          , screen: 'screen.size'
-          }
-        ]
+, tags: [ '3D', 'three.js', 'webgl' ]
+, version: '1.0'
+, provide: { renderer: 'THREE.WebGLRenderer'
+           , camera: 'THREE.Camera'
+           , screen: 'lucy.Screen'
+           }
 }

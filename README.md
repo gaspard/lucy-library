@@ -1,6 +1,32 @@
 # lucy-library
+[![travis][travis-image]][travis-url]
 
-Official components for Lucidity (common library for all users) and
-documentation on block editing.
+[travis-image]: https://img.shields.io/travis/lucidogen/lucy-library/master.svg
+[travis-url]: https://travis-ci.org/lucidogen/lucy-library
 
-* [block](./documentation/block.md)
+Official components and documentation for [Lucidity](http://lucidity.io) a JS/Typescript programming environment to create interactive applications for live arts (vj, mapping, etc).
+
+* [block](./documentation/block.md) documentation.
+* [components](./components) documentation.
+
+## Vocabulary
+
+A **block** is the simplest processing unit (think script). It contains functions and meta information such as types used to type check a graph before running it.
+
+A **node** is the representation of a block inside a graph. It simply contains who the parent is and which children nodes are connected. The **node** contains a reference to a single block.
+
+A **graph** is a combination of nodes.
+
+A **component** is either what a user can save to the library. It can be a single **block** or a **graph** containing many blocks and nodes.
+
+## Contributing
+
+To make sure the blocks contributed to the library are as useful as possible, we ask that they all have a corresponding markdown file with documentation and that they use types on all provided fields and exported methods. This helps us type check the library before releasing new versions. We also ask for a [semver](http://semver.org) version number to help identify and fix bugs.
+
+Some hints on choosing `tags`: start with the most generic tags (like '3D') and move to the more specific ones (like 'cube'). Tags for the provided context are automatically added.
+
+For example, here are the tags for [three.Mesh](./components/three.Mesh.md):
+
+```Javascript
+[ '3D', 'three.js', 'object3D', 'mesh', 'cube' ]
+```

@@ -1,5 +1,7 @@
-export const init =
-( ctx, { require, cache, detached } ) => {
+import { lucy } from '../types/lucy'
+
+export const init: lucy.Init =
+( { context, require, cache, detached } ) => {
   if ( !cache.object3D ) {
     const THREE = require ( 'THREE' )
     const geometry = new THREE.BoxGeometry
@@ -8,7 +10,7 @@ export const init =
     ( { color: 0xff0000, wireframe: true } )
 
     cache.object3D = new THREE.Mesh ( geometry, material )
-    ctx.object3D.add ( cache.object3D )
+    context.object3D.add ( cache.object3D )
   }
 
   const object3D = cache.object3D
@@ -20,9 +22,10 @@ export const init =
   return { object3D }
 }
 
-export const meta =
+export const meta: lucy.Meta =
 { description: "Create a 3D cube."
-, init: [ { object3D: 'THREE.Object3D' }
-        , { object3D: 'THREE.Object3D' }
-        ]
+, tags: [ '3D', 'three.js', 'object3D', 'mesh', 'cube' ]
+, version: '1.0'
+, expect:  { object3D: 'THREE.Object3D' }
+, provide: { object3D: 'THREE.Object3D' }
 }
