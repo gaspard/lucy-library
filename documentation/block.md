@@ -46,7 +46,7 @@ import { lucy } from '../types/lucy'
 
 ### Writing `init`
 
-We declare the function as exported and const. We also add the `lucy.Init` type annotation. Note that we use ES2015 arrow function notation because `this` is meaningless in lucidity.
+We declare the function as exported and const. We also add the `lucy.Init` type annotation. Note that we use ES2015 arrow function notation.
 
 We also use parameter destructuring to clearly show in the function definition what we will be using.
 
@@ -61,7 +61,7 @@ The next step is to check if the block is already initialized by looking at the 
   if ( !cache.object3d ) {
 ```
 
-If the cache does not contain the key we chose for this task, we start building our mesh. We use the `require` provided by the helpers object to graph three.js:
+If the cache does not contain the key we chose for this task, we start building our mesh. We use the `require` function provided by the helpers object to get the three.js library. If the library was not already in memory, this would halt `init` execution until it is and then call `init` again:
 
 ```Javascript
     const THREE = require ( 'THREE' )
@@ -83,7 +83,7 @@ We then create our default mesh and write it to the cache:
     cache.object3d = new THREE.Mesh ( geometry, material )
 ```
 
-The final step is to add our newly created mesh to the current `object3d` context. Note that contextual objects should be all lowercase as convention (same as tags). Once the object is added, we are done with the "execute only once" operation and we close the semicolon. We then capture the value in the cache in a variable for the next operations to make the code more readable.
+The final step is to add our newly created mesh to the current `object3d` context. Note that contextual objects should be all lowercase as convention (same as tags). Once the object is added, we are done with the "execute only once" operation and we close the braces. We then capture the value in the cache in a variable for the next operations to make the code more readable.
 
 ```Javascript
     context.object3d.add ( cache.object3d )
@@ -109,7 +109,7 @@ We want to revert what we just did in case the node representing this block is d
 
 ### Providing new elements in the context
 
-We can now provide our `object3d` mesh by returning it in the context change object:
+We can now provide our `object3d` mesh to our children by returning it in the "context changes" object:
 
 ```Javascript
   return { object3d }
@@ -121,6 +121,8 @@ We can now provide our `object3d` mesh by returning it in the context change obj
 We now need to provide some type information on our object as well as some tags that will help our users find and use it. For this object to work, the only required fields are `expect` and `provide`. The other fields are needed when/if this object is added to the library.
 
 The fields in `provide` should match what our init function returns. The `expect` field should list all elements required in the context or the object could break when moved or when the context is changed.
+
+See [meta](meta.md) for details on these fields.
 
 ```Javascript
 export const meta: lucy.Meta =
