@@ -133,3 +133,5 @@ export const meta: lucy.Meta =
 , provide: { object3d: 'THREE.Object3D' }
 }
 ```
+
+The full source for this object is: [three.Mesh.ts](../components/three.Mesh.ts)
