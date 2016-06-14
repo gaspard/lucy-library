@@ -94,7 +94,7 @@ Try to use functions of state for dynamic properties instead of doing things lik
 [ three.Scene    ]
 [ three.Mesh     ]
 [ three.Rotate.y ]
-[ time.Now       ]
+[ time.Now ]
 ```
 
 To rotate the mesh, let's add a `three.Rotate.y` object to it with `time.Now` as child. The latter will feed the current elapsed time in seconds to its parent which uses this value to set the Euler angle for the `y` (up) axis in radians. Radians measure angles from `0` to `2*PI` but the convention for input/output blocks is to provide values in the range of `[0,1]` so the rotation is actually calculated like this:
@@ -112,12 +112,12 @@ This will make the cube do a full rotation whenever the input goes from `0` to `
 [ three.Mesh     ]
 [ three.Rotate.y ]
 [ three.Rotate.x ]
-[ time.Now       ]
+[ time.Now ]
 ```
 
 ## A note about context
 
-With this simple rotating cube, we do not know if we are moving the whole scene or just the cube. To be sure, let's add another mesh to the scene and move it slightly to the right (along the x axis):
+With this simple rotating cube, we do not know if we are moving the whole scene or just the cube. To be sure, let's add another mesh to the scene and move it slightly to the right (along the x axis) with `three.Position.x` and `value`:
 
 ```lucidity
 [ three.WebGLRenderer                ]
@@ -125,7 +125,8 @@ With this simple rotating cube, we do not know if we are moving the whole scene 
 [ three.Scene                        ]
 [ three.Mesh     ][ three.Mesh       ]
 [ three.Rotate.y ][ three.Position.x ]
-[ time.Now       ][ value ]
+[ three.Rotate.x ][ value ]
+[ time.Now ]
 ```
 
 The `value` block simply returns `1` by default. As you can see, the `object3d` on which `three.Rotation.y` and `three.Position.x` act is not the same. This is because the `three.Mesh` blocks modify the context for their children by passing themselves as the new "thing on which to act in 3D".
@@ -136,9 +137,10 @@ Just for fun, you can now try dropping `three.Rotate.z` and another `time.Now` e
 [ three.WebGLRenderer                                  ]
 [ animation.Loop                                       ]
 [ three.Scene                                          ]
-[ three.Mesh     ][ three.Mesh       ][ three.Rotate.y ]
+[ three.Mesh     ][ three.Mesh       ][ three.Rotate.z ]
 [ three.Rotate.y ][ three.Position.x ][ time.Now ]
-[ time.Now       ][ value ]
+[ three.Rotate.x ][ value ]
+[ time.Now ]
 ```
 
 ## A final note on conventions
