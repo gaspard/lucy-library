@@ -10,7 +10,7 @@ The first thing we need to do is configure `#screen`, the DOM element that we us
 [ three.WebGLRenderer ]
 ```
 
-This simply adds a canvas inside the `#screen` element and creates a WebGL renderer with the proper screen size. This block also creates a default [perspective camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera) with the following settings:
+This adds a canvas inside the `#screen` element and creates a WebGL renderer with the proper screen size. This block also creates a default [perspective camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera) with the following settings:
 
 * 60° vertical field of view.
 * aspect ratio synced to the screen dimension.
