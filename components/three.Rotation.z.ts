@@ -1,7 +1,7 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 let rotation, value
 
-export const init: lucy.Init =
+export const init: Init =
 ( { context, children, cache } ) => {
   value = children [ 0 ]
   rotation = context.object3d.rotation
@@ -9,12 +9,12 @@ export const init: lucy.Init =
 
 const PI2 = Math.PI * 2
 
-export const update: lucy.Update =
+export const update: Update =
 () => {
   rotation.z = value () * PI2
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Rotate the current 3D object along z (front) axis."
 , tags: [ '3D' , 'three.js', 'rotation', 'z' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

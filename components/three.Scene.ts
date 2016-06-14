@@ -1,7 +1,7 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 let render, camera, childrenUpdate, object3d
 
-export const init: lucy.Init =
+export const init: Init =
 ( { context, require, children, cache } ) => {
   render = context.renderer.render
   camera = context.camera
@@ -16,13 +16,13 @@ export const init: lucy.Init =
   return { object3d }
 }
 
-export const update: lucy.Update =
+export const update: Update =
 () => {
   childrenUpdate ()
   render ( object3d, camera )
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Prepare and render a 3D rendering scene."
 , tags: [ '3D' , 'three.js', 'object3d', 'scene' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

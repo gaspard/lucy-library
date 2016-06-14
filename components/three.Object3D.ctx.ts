@@ -1,19 +1,19 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 let object3d
 
-export const init: lucy.Init =
+export const init: Init =
 ( { context, children, cache } ) => {
   object3d = context.object3d
 }
 
 const PI2 = Math.PI * 2
 
-export const update: lucy.Update =
+export const update: Update =
 () => {
 
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Starting object to act on three.Object3D context."
 , tags: [ '3d' , 'three.js', 'object3d', 'ctx' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

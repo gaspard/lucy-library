@@ -1,11 +1,11 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 
-export const update: lucy.Update =
+export const update: Update =
 (): number => {
   return 1
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Return a number."
 , tags: [ 'constant', 'value' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

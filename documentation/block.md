@@ -41,17 +41,17 @@ So now that we know that most of the block definition happens in the `init` func
 If we intend to publish the block in the official library, we have to type check it. Note that this does not impact on performance since it is only done once when the object is added to the library and the source code is compiled to Javascript.
 
 ```Javascript
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 ```
 
 ### Writing `init`
 
-We declare the function as exported and const. We also add the `lucy.Init` type annotation. Note that we use ES2015 arrow function notation.
+We declare the function as exported and const. We also add the `Init` type annotation. Note that we use ES2015 arrow function notation.
 
 We also use parameter destructuring to clearly show in the function definition what we will be using.
 
 ```Javascript
-export const init: lucy.Init =
+export const init: Init =
 ( { context, require, cache, detached } ) => {
 ```
 
@@ -118,14 +118,14 @@ We can now provide our `object3d` mesh to our children by returning it in the "c
 
 ### Writing the `meta` information
 
-We now need to provide some type information on our object as well as some tags that will help our users find and use it. For this object to work, the only required fields are `expect` and `provide`. The other fields are needed when/if this object is added to the library.
+We now need to provide some type information on our object as well as some tags that will help our users find and use it. For this object to work, the only required fields are `expect` and `provide`. The other fields are useful if this object is added to the library.
 
 The fields in `provide` should match what our init function returns. The `expect` field should list all elements required in the context or the object could break when moved or when the context is changed.
 
 See [meta](meta.md) for details on these fields.
 
 ```Javascript
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Create a 3D cube."
 , tags: [ '3D', 'three.js', 'object3d', 'mesh', 'cube' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

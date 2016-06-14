@@ -1,9 +1,9 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 import { animation } from '../types/animation'
 let time: animation.Time
 let loop, updateChildren
 
-export const init: lucy.Init =
+export const init: Init =
 ( { children, cache } ) => {
   updateChildren = children.all
 
@@ -28,7 +28,7 @@ export const init: lucy.Init =
   return { time }
 }
 
-export const update: lucy.Update =
+export const update: Update =
 () => {
   loop = () => {
     // TODO: this is where we would could deal with play,
@@ -38,7 +38,7 @@ export const update: lucy.Update =
   }
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: 'Runs the children update functions on each frame.'
 , tags: [ 'animation', 'time' ]
 , author: 'Gaspard Bucher <gaspard@lucidogen.io>'

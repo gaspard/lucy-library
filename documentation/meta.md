@@ -3,7 +3,7 @@
 You can (and should) export a meta object [blocks](block.md) to add type checking, a description and version/author information. Here is an example of a `meta` export (from [three.Scene](../components/three.Scene.ts#L22)):
 
 ```Javascript
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Prepare and render a 3D rendering scene."
 , tags: [ '3D' , 'three.js', 'object3d', 'scene' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
@@ -20,7 +20,7 @@ export const meta: lucy.Meta =
 
 As convention, the fields in `meta` should match the order listed here.
 
-## Mandatory fields when added to the library
+## Mandatory fields when added to the official library
 
 * **description**: This is shown while searching the library.
 

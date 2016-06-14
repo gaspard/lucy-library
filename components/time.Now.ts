@@ -1,17 +1,17 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 let time
 
-export const init: lucy.Init =
+export const init: Init =
 ( { context } ) => {
   time = context.time
 }
 
-export const update: lucy.Update =
+export const update: Update =
 (): number => {
   return time.now
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Return the current animation time in seconds."
 , tags: [ 'animation', 'time', 'now' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

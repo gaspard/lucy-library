@@ -1,7 +1,7 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 import { environment } from '../types/environment'
 
-export const init: lucy.Init =
+export const init: Init =
 ( { require, cache, detached } ) => {
   const THREE = require ( 'THREE' )
   const container = document.getElementById ( 'screen' )
@@ -34,7 +34,7 @@ export const init: lucy.Init =
   return { renderer, camera, screen }
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Prepare the rendering context for THREE.js."
 , tags: [ '3D', 'three.js', 'webgl' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'

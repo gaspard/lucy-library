@@ -1,6 +1,6 @@
-import { lucy } from '../types/lucy'
+import { Init, Update, Meta } from '../types/lucidity'
 
-export const init: lucy.Init =
+export const init: Init =
 ( { context, require, cache, detached } ) => {
   if ( !cache.object3d ) {
     const THREE = require ( 'THREE' )
@@ -27,7 +27,7 @@ export const init: lucy.Init =
   return { object3d }
 }
 
-export const meta: lucy.Meta =
+export const meta: Meta =
 { description: "Create a 3D cube."
 , tags: [ '3D', 'three.js', 'object3d', 'mesh', 'cube' ]
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
