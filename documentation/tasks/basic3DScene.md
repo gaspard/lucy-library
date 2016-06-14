@@ -1,6 +1,6 @@
 # Creating a basic 3D scene
 
-This tutorial explains how to create a basic 3D scene with [three.js](http://threejs.org), a very powerful library for creating 3D in the with Javascript.
+This tutorial explains how to create a basic 3D scene with [three.js](http://threejs.org), a very powerful library for creating 3D with Javascript.
 
 ## Setup rendering context
 
