@@ -2,7 +2,7 @@ import { lucy } from '../types/lucy'
 import { environment } from '../types/environment'
 
 export const init: lucy.Init =
-( { cache, require, detached } ) => {
+( { require, cache, detached } ) => {
   const THREE = require ( 'THREE' )
   const container = document.getElementById ( 'screen' )
   const screen: environment.Screen = container.getBoundingClientRect ()

@@ -2,7 +2,7 @@ import { lucy } from '../types/lucy'
 let object3d
 
 export const init: lucy.Init =
-( { context, cache, children } ) => {
+( { context, children, cache } ) => {
   object3d = context.object3d
 }
 

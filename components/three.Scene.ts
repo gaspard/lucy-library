@@ -2,7 +2,7 @@ import { lucy } from '../types/lucy'
 let render, camera, childrenUpdate, object3d
 
 export const init: lucy.Init =
-( { context, cache, require, children } ) => {
+( { context, require, children, cache } ) => {
   render = context.renderer.render
   camera = context.camera
   childrenUpdate = children.all

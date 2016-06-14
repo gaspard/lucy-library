@@ -6,11 +6,19 @@ You can (and should) export a meta object [blocks](block.md) to add type checkin
 export const meta: lucy.Meta =
 { description: "Prepare and render a 3D rendering scene."
 , tags: [ '3D' , 'three.js', 'object3d', 'scene' ]
+, author: 'Gaspard Bucher <gaspard@lucidity.io>'
+, origin: 'lucidity.io/three.Scene'
 , version: '1.0'
-, expect:  { renderer: 'THREE.WebGLRenderer' }
+, expect:
+  { renderer: 'THREE.WebGLRenderer'
+  , camera: 'THREE.Camera'
+  }
 , provide: { object3d: 'THREE.Object3D' }
+, children: 'all'
 }
 ```
+
+As convention, the fields in `meta` should match the order listed here.
 
 ## Mandatory fields when added to the library
 
@@ -47,27 +55,6 @@ export const meta =
 }
 ```
 
-### update
-
-For the update function, the **update** field informs on the type of the update function's arguments and return value by providing a string with the same notation as the one used in Typescript for function interface. The type information is not required and should not be set for void functions `(): void`.
-
-Here are some examples:
-
-A function with no return value: `(a: number)`
-
-A function with a return value but no argument: `(): number`
-
-A function to add two numbers: `(a: number, b: number): number`
-
-```Javascript
-export const update = ( a, b ) => {
-  return a + b
-}
-export const meta =
-{ update: '(a: number, b: number ): number'
-}
-```
-
 ### children
 
 This sets the type of the block's children update functions in the same way as **update**, but with one string per child. The children's functions are accessed through the [children](helper.md#children) helper in the [init](init.md) function.
@@ -88,3 +75,24 @@ As a rule of thumb: any block using `children.all` must have `children: 'all'` i
 ### children and slot count
 
 The existence of `children` type information in a block changes the way a node behaves in a graph regarding slots. Without children typing in the corresponding block, a node can have any number of slots and free slots are automatically added. With type definition, the node has exactly `children.length` slots.
+
+### update
+
+For the update function, the **update** field informs on the type of the update function's arguments and return value by providing a string with the same notation as the one used in Typescript for function interface. The type information is not required and should not be set for void functions `(): void`.
+
+Here are some examples:
+
+A function with no return value: `(a: number)`
+
+A function with a return value but no argument: `(): number`
+
+A function to add two numbers: `(a: number, b: number): number`
+
+```Javascript
+export const update = ( a, b ) => {
+  return a + b
+}
+export const meta =
+{ update: '(a: number, b: number ): number'
+}
+```

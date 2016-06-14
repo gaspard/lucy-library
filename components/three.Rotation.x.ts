@@ -2,7 +2,7 @@ import { lucy } from '../types/lucy'
 let rotation, value
 
 export const init: lucy.Init =
-( { context, cache, children } ) => {
+( { context, children, cache } ) => {
   value = children [ 0 ]
   rotation = context.object3d.rotation
 }

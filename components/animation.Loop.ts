@@ -4,7 +4,7 @@ let time: animation.Time
 let loop, updateChildren
 
 export const init: lucy.Init =
-( { cache, children } ) => {
+( { children, cache } ) => {
   updateChildren = children.all
 
   if ( !cache.time ) {
