@@ -1,16 +1,6 @@
 import { midi } from './midi'
 
 export namespace lucy {
-  export interface Time {
-    // all units in [s]
-    // now = 0: start of animation
-    now: number
-    // Note that 'dt' can be negative if the animation loops.
-    dt: number
-  }
-
-  // ======== Types for Block definition =======
-
   type ContextExtension = any
 
   interface MainContext {
@@ -30,8 +20,6 @@ export namespace lucy {
     ( libname: string ): any
   }
 
-
-
   interface Helpers {
     context: Context
     cache: Cache
@@ -47,11 +35,15 @@ export namespace lucy {
   export interface Meta {
     description: string
     tags: string[]
-    version: string       // only mandatory in library
+    // only mandatory in library
+    author: string
+    origin: string
+    version: string
+    // end mandatory
     expect?: ContextType
     provide?: ContextType
-    update?: string
     children?: string[] | 'all'
+    update?: string
   }
 
   export interface Init {

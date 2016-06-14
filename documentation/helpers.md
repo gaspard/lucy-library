@@ -30,18 +30,18 @@ export const init =
 The [three.Scene](../components/three.Scene.ts#L5) will have access to it in its `init` function:
 
 ```Javascript
-let renderer, camera, object3D
+let renderer, camera, object3d
 export const init =
 ( { context, cache, require } ) => {
   renderer = context.renderer
   camera = context.camera
 
   const THREE = require ( 'THREE' )
-  if ( !cache.object3D ) {
-    cache.object3D = new THREE.Scene ()
+  if ( !cache.object3d ) {
+    cache.object3d = new THREE.Scene ()
   }
-  object3D = cache.object3D
-  return { object3D }
+  object3d = cache.object3d
+  return { object3d }
 }
 ```
 
@@ -67,7 +67,7 @@ Make sure to declare all required children in [meta](meta.md#children) to ensure
 
 ### children.all
 
-This returns a function that calls all the update functions of descendants whose parents do not manage the updates themselves. A parent manages his children updates when he has a `children` meta field. See [lucy.Animate][../components/lucy.Animate.ts] for an example.
+This returns a function that calls all the update functions of descendants whose parents do not manage the updates themselves. A parent manages his children updates when he has a `children` meta field. See [animation.Loop][../components/animation.Loop.ts] for an example.
 
 ## require
 

@@ -1,5 +1,6 @@
 import { lucy } from '../types/lucy'
-let time: lucy.Time
+import { animation } from '../types/animation'
+let time: animation.Time
 let loop, updateChildren
 
 export const init: lucy.Init =
@@ -7,15 +8,15 @@ export const init: lucy.Init =
   updateChildren = children.all
 
   if ( !cache.time ) {
-    const time: lucy.Time =
+    const time: animation.Time =
     { now: performance.now () / 1000, dt: 0 }
     cache.time = time
-    requestAnimationFrame ( () => cache.animate () )
+    requestAnimationFrame ( () => cache.animation () )
   }
   time = cache.time
 
-  cache.animate = () => {
-    requestAnimationFrame ( () => cache.animate () )
+  cache.animation = () => {
+    requestAnimationFrame ( () => cache.animation () )
     if ( loop ) {
       // Monotonic clock in seconds
       const now = performance.now () / 1000
@@ -38,11 +39,11 @@ export const update: lucy.Update =
 }
 
 export const meta: lucy.Meta =
-{ description: "Runs the children's update functions on each frame."
+{ description: 'Runs the children update functions on each frame.'
 , tags: [ 'animation', 'time' ]
+, author: 'Gaspard Bucher <gaspard@lucidogen.io>'
+, origin: 'lucidity.io/animation.Loop'
 , version: '1.0'
-, provide: { time: 'lucy.Time'
-           }
-, update: '()'
+, provide: { time: 'animation.Time' }
 , children: 'all' // special case where we handle children ourselves but do not type them.
 }

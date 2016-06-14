@@ -5,10 +5,10 @@ You can (and should) export a meta object [blocks](block.md) to add type checkin
 ```Javascript
 export const meta: lucy.Meta =
 { description: "Prepare and render a 3D rendering scene."
-, tags: [ '3D' , 'three.js', 'object3D', 'scene' ]
+, tags: [ '3D' , 'three.js', 'object3d', 'scene' ]
 , version: '1.0'
 , expect:  { renderer: 'THREE.WebGLRenderer' }
-, provide: { object3D: 'THREE.Object3D' }
+, provide: { object3d: 'THREE.Object3D' }
 }
 ```
 
@@ -22,16 +22,17 @@ export const meta: lucy.Meta =
 
 * **author**: The name and email of the author. This information is removed from the block when extracted from the library so that the author information does not stick with modified versions of the file.
 
-* **origin**: Unique identifier for the block usually a domain name related to the source (or an email) followed by a slash and the original object name. For example, the origin for "lucy.Animate" is "lucidity.io/lucy.Animate". This helps give keep some credit to the original author and eventually find back what this block was before it got broken for example. This is automatically added by using the user's email, like this "some.user@some.domain/block.Name".
+* **origin**: Unique identifier for the block usually a domain name related to the source (or an email) followed by a slash and the original object name. For example, the origin for "animation.Loop" is "lucidity.io/animation.Loop". This helps give keep some credit to the original author and eventually find back what this block was before it got broken for example. This is automatically added by using the user's email, like this "some.user@some.domain/block.Name".
 
 
 ## Type checking
 
-This is the most important feature to help produce valid and bug-free code when composing a graph. These fields help assert that the required types are available before calling the [init](init.md) or [render](render.md) functions.
+This is the most important feature to help produce valid and bug-free code when composing a graph. These fields help assert that the required types are available before calling the [init](init.md) or [update](update.md) functions.
 
-Note that these type definitions could be used to create Typescript interface definitions so that exported code can be statically type checked.
+Note that these type definitions could be used to create Typescript interface so that exported code can be statically type checked. There are two kinds of type checking:
 
-The fields for type definition are **expect**, **provide**, **render** and **children**:
+1. Structural type checking through **expect** and **provide**. An invalid context prevents the calls to `init` and `update`.
+2. Functional type checking through **update** and **children**. Invalid connected parent and/or children prevents the call to `update`.
 
 ### expect, provide
 
@@ -42,13 +43,13 @@ The optional **provide** field defines what the `init` function returns and how 
 ```Javascript
 export const meta =
 { expect:  { renderer: 'THREE.WebGLRenderer' }
-, provide: { object3D: 'THREE.Object3D' }
+, provide: { object3d: 'THREE.Object3D' }
 }
 ```
 
 ### update
 
-For the render function, the **render** field informs on the type of the render function's arguments and return value by providing a string with the same notation as the one used in Typescript for function interface.
+For the update function, the **update** field informs on the type of the update function's arguments and return value by providing a string with the same notation as the one used in Typescript for function interface. The type information is not required and should not be set for void functions `(): void`.
 
 Here are some examples:
 
@@ -59,11 +60,11 @@ A function with a return value but no argument: `(): number`
 A function to add two numbers: `(a: number, b: number): number`
 
 ```Javascript
-export const render = ( a, b ) => {
+export const update = ( a, b ) => {
   return a + b
 }
 export const meta =
-{ render: '(a: number, b: number ): number'
+{ update: '(a: number, b: number ): number'
 }
 ```
 
@@ -77,7 +78,11 @@ Calls to the `update` function is done in two ways:
 
 2. Parent is not in charge: the parent does not have a `children` meta field. In this case the children's update function is collected and passed to the first parent with a `children: 'all'` meta setting.
 
+<aside class='note'>
 Note that the `all` function only works on `update` with the void signature `()`. With any other signature, a child would be considered invalid because incompatible with its parent and would not be called.
+</aside>
+
+As a rule of thumb: any block using `children.all` must have `children: 'all'` in meta.
 
 
 ### children and slot count

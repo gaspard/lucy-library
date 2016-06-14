@@ -2,30 +2,37 @@ import { lucy } from '../types/lucy'
 
 export const init: lucy.Init =
 ( { context, require, cache, detached } ) => {
-  if ( !cache.object3D ) {
+  if ( !cache.object3d ) {
     const THREE = require ( 'THREE' )
-    const geometry = new THREE.BoxGeometry
-    ( 200, 200, 200 )
-    const material = new THREE.MeshBasicMaterial
-    ( { color: 0xff0000, wireframe: true } )
+    const dim = 1
+    const geometry = new THREE.BoxGeometry ( dim, dim, dim )
+    const material = new THREE.MeshPhongMaterial
+    ( { color: 0x156289
+      , emissive: 0x072534
+      , side: THREE.DoubleSide
+      , shading: THREE.FlatShading
+      }
+    )
 
-    cache.object3D = new THREE.Mesh ( geometry, material )
-    context.object3D.add ( cache.object3D )
+    cache.object3d = new THREE.Mesh ( geometry, material )
+    context.object3d.add ( cache.object3d )
   }
 
-  const object3D = cache.object3D
+  const object3d = cache.object3d
   if ( detached ) {
-    if ( object3D.parent ) {
-      object3D.parent.remove ( object3D )
+    if ( object3d.parent ) {
+      object3d.parent.remove ( object3d )
     }
   }
-  return { object3D }
+  return { object3d }
 }
 
 export const meta: lucy.Meta =
 { description: "Create a 3D cube."
-, tags: [ '3D', 'three.js', 'object3D', 'mesh', 'cube' ]
+, tags: [ '3D', 'three.js', 'object3d', 'mesh', 'cube' ]
+, author: 'Gaspard Bucher <gaspard@lucidity.io>'
+, origin: 'lucidity.io/three.Mesh'
 , version: '1.0'
-, expect:  { object3D: 'THREE.Object3D' }
-, provide: { object3D: 'THREE.Object3D' }
+, expect:  { object3d: 'THREE.Object3D' }
+, provide: { object3d: 'THREE.Object3D' }
 }

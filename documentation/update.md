@@ -57,16 +57,38 @@ export const meta =
 
 ## No update function
 
-When a block does not have an update function, it's children's update can still be reached if an ancestor calls `children.all`. In this case the graph is parsed (once during compilation) to gather the update functions of the children and they are all called, from left to right, depth-first. See [lucy.Animate](../components/lucy.Animate.ts) for such an example. Note that the gathering of children functions stops whenever a block has `children` type declarations (through [meta](meta.md#children)) in which case we consider that this block handles the calls to it's children by itself.
+When a block does not have an update function, it's children's update can still be reached if an ancestor calls `children.all`. In this case the graph is parsed (once during compilation) to gather the update functions of the children and they are all called, from left to right, depth-first.
+
+See [animation.Loop](../components/animation.Loop.ts) for such an example. Note that the gathering of children functions stops whenever a block has `children` type declarations (see [meta.children](meta.md#children)) in which case we consider that this block handles the calls to it's children by itself.
 
 For example (all blocks with an `update` function have a `*`):
 
 ```ascii
-[ lucy.Animate *          ]
+[ animation.Loop *          ]
 [ three.Scene             ]
 [ some obj   ][ some obj  ]
 [ rotate1 *  ][ rotate2 * ]
 [ position * ]
 ```
 
-When lucy.Animate calls `updateChildren()`, this will run the following functions
+When animation.Loop calls `children.all ()`, this will run the following functions:
+
+* position, rotate1, rotate2
+
+# Children `stealing`
+
+When a grand-parent expects a child in the first slot and this child has no `update` type, the grand-parent looks further down until it finds a first child with an `update` type. It then uses this as if it where it's own child.
+
+This might seem complicated but it simply lets you stack actions depending on the same values like this:
+
+```lucidity
+[ three.WebGLRenderer ]
+[ animation.Loop   ]
+[ three.Scene    ]
+[ three.Mesh     ]
+[ three.Rotate.y ]
+[ three.Rotate.x ]
+[ time.Now       ]
+```
+
+In this example, `time.Now` is used for both `three.Rotate.y` and `three.Rotate.x`.

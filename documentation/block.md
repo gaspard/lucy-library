@@ -1,6 +1,6 @@
 # Block
 
-The 'block' is the smallest processing unit available. It consists of a main source file written in Javascript or Typescript. The blocks in the official library are in the public domain. There is no `author` field on the meta information of a block because these small scripts are meant to be modified by the users and we do not want the original author to be linked to all these derivative works. To know the original author of a block, please consult the documentation for each object, like this [lucy.Animate](../components/lucy.Animate.md).
+The 'block' is the smallest processing unit available. It consists of a main source file written in Javascript or Typescript. The blocks in the official library are in the public domain. There is no `author` field on the meta information of a block because these small scripts are meant to be modified by the users and we do not want the original author to be linked to all these derivative works. To know the original author of a block, please consult the documentation for each object, like this [animation.Loop](../components/animation.Loop.md).
 
 A block is considered like a small module and can export the following:
 

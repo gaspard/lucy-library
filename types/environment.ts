@@ -1,9 +1,6 @@
-/** Information on the screen size and position in the view port.
-
-All units are in pixels.
-
-*/
-export namespace lucy {
+export namespace environment {
+  // Information on the screen size and position in the view port
+  // All units are in pixels.
   export interface Screen {
     width: number
     height: number
