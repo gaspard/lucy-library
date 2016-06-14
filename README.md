@@ -6,8 +6,12 @@
 
 Official components and documentation for [Lucidity](http://lucidity.io) a JS/Typescript programming environment to create interactive applications for live arts (vj, mapping, etc).
 
-* [block](./documentation/block.md) documentation.
-* [components](./components) documentation.
+* [Writing a block](documentation/block.md)
+* [List of components](components)
+
+## Tutorials
+
+* [Create a basic 3D scene](documentation/tasks/basic3DScene.md)
 
 ## Vocabulary
 
