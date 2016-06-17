@@ -57,7 +57,7 @@ export const meta =
 
 ### children
 
-This sets the type of the block's children update functions in the same way as **update**, but with one string per child. The children's functions are accessed through the [children](helper.md#children) helper in the [init](init.md) function.
+This sets the type of the block's children update functions in the same way as **update**, but with one string per child. The children's functions are accessed through the [children](helpers.md#children) helper in the [init](init.md) function.
 
 Calls to the `update` function is done in two ways:
 
@@ -66,7 +66,7 @@ Calls to the `update` function is done in two ways:
 2. Parent is not in charge: the parent does not have a `children` meta field. In this case the children's update function is collected and passed to the first parent with a `children: 'all'` meta setting.
 
 <aside class='note'>
-Note that the `all` function only works on `update` with the void signature `()`. With any other signature, a child would be considered invalid because incompatible with its parent and would not be called.
+Note that the `all` function only works on `update` with the void signature `():void`. With any other signature, a child would be considered invalid because incompatible with its parent and would not be called.
 </aside>
 
 As a rule of thumb: any block using `children.all` must have `children: 'all'` in meta.

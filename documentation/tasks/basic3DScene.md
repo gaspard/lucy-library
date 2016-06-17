@@ -46,6 +46,10 @@ In order to have precise depth buffer calculations and avoid things like zig-zag
 
 PS: the "Frustum" is a strange word for the shape that defines what a user sees up, down, left, right, near and far. It's the pyramid you can draw with your arms embracing all you can see.
 
+```lucidity
+[ three.WebGLRenderer ]
+```
+
 ## Prepare for animation
 
 If you intend to have things that change over time in your 3D scene and you are not simply creating a drawing, you can add `animation.Loop` to setup an animation loop that will update the graph once for every monitor refresh. This value is typically `1/60` seconds. We say that we draw at 60 fps (frames per seconds)..
@@ -61,23 +65,27 @@ You now have this processing graph, but nothing draws yet because there is no co
 
 A `three.Scene` is the root of a ... scene graph: a collection of objects to draw, lights, etc. In Lucidity, the scene is responsible for triggering the 3D rendering by calling `update` on its children and then calling the renderer's render function.
 
+And since graphics without lights is no fun, let's also add some default lights. Note that the lights are added to a scene, just like any ordinary object.
+
+[ three.Lights ]
 ```lucidity
 [ three.WebGLRenderer ]
 [ animation.Loop ]
-[ three.Scene ]
+[ three.Scene  ]
+[ three.Lights ]
 ```
 
 ## Add a mesh
 
 A `three.Mesh` is made of a geometry (a shape) and a material (how the shape should look like). By adding this block, it will register itself inside the scene and you will get something displayed on screen.
 
-The default geometry for a mesh is a cube of size `1m`.
+The default geometry for a mesh is a cube of size `1m`. Make sure to add the mesh to the scene, not the lights. Adding to the lights works but then your lights cannot move independently of the mesh which is not nice.
 
 ```lucidity
-[ three.WebGLRenderer ]
-[ animation.Loop ]
-[ three.Scene ]
-[ three.Mesh ]
+[ three.WebGLRenderer        ]
+[ animation.Loop             ]
+[ three.Scene                ]
+[ three.Lights ][ three.Mesh ]
 ```
 
 ## Animate the mesh
@@ -89,12 +97,12 @@ Try to use functions of state for dynamic properties instead of doing things lik
 </aside>
 
 ```lucidity
-[ three.WebGLRenderer ]
-[ animation.Loop ]
-[ three.Scene    ]
-[ three.Mesh     ]
-[ three.Rotate.y ]
-[ time.Now ]
+[ three.WebGLRenderer            ]
+[ animation.Loop                 ]
+[ three.Scene                    ]
+[ three.Lights ][ three.Mesh     ]
+                [ three.Rotate.y ]
+                [ time.Now ]
 ```
 
 To rotate the mesh, let's add a `three.Rotate.y` object to it with `time.Now` as child. The latter will feed the current elapsed time in seconds to its parent which uses this value to set the Euler angle for the `y` (up) axis in radians. Radians measure angles from `0` to `2*PI` but the convention for input/output blocks is to provide values in the range of `[0,1]` so the rotation is actually calculated like this:
@@ -106,13 +114,13 @@ object3d.rotation.y = input () * 2 * Math.PI
 This will make the cube do a full rotation whenever the input goes from `0` to `1`, in this case in one second. We can stack another rotation on the `x` axis to make this nicer:
 
 ```lucidity
-[ three.WebGLRenderer ]
-[ animation.Loop ]
-[ three.Scene    ]
-[ three.Mesh     ]
-[ three.Rotate.y ]
-[ three.Rotate.x ]
-[ time.Now ]
+[ three.WebGLRenderer            ]
+[ animation.Loop                 ]
+[ three.Scene                    ]
+[ three.Lights ][ three.Mesh     ]
+                [ three.Rotate.y ]
+                [ three.Rotate.x ]
+                [ time.Now ]
 ```
 
 ## A note about context
@@ -120,13 +128,13 @@ This will make the cube do a full rotation whenever the input goes from `0` to `
 With this simple rotating cube, we do not know if we are moving the whole scene or just the cube. To be sure, let's add another mesh to the scene and move it slightly to the right (along the x axis) with `three.Position.x` and `value`:
 
 ```lucidity
-[ three.WebGLRenderer                ]
-[ animation.Loop                     ]
-[ three.Scene                        ]
-[ three.Mesh     ][ three.Mesh       ]
-[ three.Rotate.y ][ three.Position.x ]
-[ three.Rotate.x ][ value ]
-[ time.Now ]
+[ three.WebGLRenderer                                ]
+[ animation.Loop                                     ]
+[ three.Scene                                        ]
+[ three.Lights ][ three.Mesh     ][ three.Mesh       ]
+                [ three.Rotate.y ][ three.Position.x ]
+                [ three.Rotate.x ][ value ]
+                [ time.Now ]
 ```
 
 The `value` block simply returns `1` by default. As you can see, the `object3d` on which `three.Rotation.y` and `three.Position.x` act is not the same. This is because the `three.Mesh` blocks modify the context for their children by passing themselves as the new "thing on which to act in 3D".
@@ -134,13 +142,13 @@ The `value` block simply returns `1` by default. As you can see, the `object3d` 
 Just for fun, you can now try dropping `three.Rotate.z` and another `time.Now` element on the third slot of `three.Scene` to see what happens.
 
 ```lucidity
-[ three.WebGLRenderer                                  ]
-[ animation.Loop                                       ]
-[ three.Scene                                          ]
-[ three.Mesh     ][ three.Mesh       ][ three.Rotate.z ]
-[ three.Rotate.y ][ three.Position.x ][ time.Now ]
-[ three.Rotate.x ][ value ]
-[ time.Now ]
+[ three.WebGLRenderer                                                  ]
+[ animation.Loop                                                       ]
+[ three.Scene                                                          ]
+[ three.Lights ][ three.Mesh     ][ three.Mesh       ][ three.Rotate.z ]
+                [ three.Rotate.y ][ three.Position.x ][ time.Now ]
+                [ three.Rotate.x ][ value ]
+                [ time.Now ]
 ```
 
 ## A final note on conventions

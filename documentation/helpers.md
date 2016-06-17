@@ -40,6 +40,10 @@ export const init =
 
 We use [meta.expect](meta.md#expect) and [meta.provide](meta.md#provide) to ensure that what a child node needs in his context is actually present when the `init` function is run.
 
+## control
+
+See [control](control.md)
+
 ## require
 
 This works the same as Node.js `require` function and lets you load external libraries. If the library is not available in memory, this function call will interrupt the init function and ask the user for the missing library.

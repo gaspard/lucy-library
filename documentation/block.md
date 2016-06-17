@@ -41,7 +41,7 @@ So now that we know that most of the block definition happens in the `init` func
 If we intend to publish the block in the official library, we have to type check it. Note that this does not impact on performance since it is only done once when the object is added to the library and the source code is compiled to Javascript.
 
 ```Javascript
-import { Init, Update, Meta } from '../types/lucidity'
+import { Init, Update, Meta } from 'lucidity'
 ```
 
 ### Writing `init`
