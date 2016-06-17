@@ -1,12 +1,12 @@
 import { Init, Update, Meta } from '../types/lucidity'
-import { midi } from '../types/midi'
+import { State } from '../types/midi'
 let velocities
 const channel = 1
 const note = 60
 
 export const init: Init =
 ( { context } ) => {
-  const midi: midi.State = context.midi
+  const midi: State = context.midi
   velocities = midi.note [ channel ]
 }
 

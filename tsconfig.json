@@ -3,6 +3,7 @@
   , ".git"
   , "typings/browser"
   , "typings/browser.d.ts"
+  , "dist"
   ]
 , "compilerOptions":
   { "outDir": "dist"

@@ -1,25 +1,25 @@
-import { midi } from './midi'
+import { State as MidiState } from './midi'
 
-type ContextExtension = any
+export type ContextExtension = any
 
-interface MainContext {
-  midi: midi.State
+export interface MainContext {
+  midi: MidiState
 }
 
-type Cache = any
+export type Cache = any
 
-type Context = MainContext & ContextExtension
+export type Context = MainContext & ContextExtension
 
-interface Children {
+export interface Children {
   [ key: number ]: Update
   all (): void
 }
 
-interface Require {
+export interface Require {
   ( libname: string ): any
 }
 
-interface Helpers {
+export interface Helpers {
   context: Context
   cache: Cache
   children: Children
@@ -27,7 +27,7 @@ interface Helpers {
   require: Require
 }
 
-interface ContextType {
+export interface ContextType {
   [ key: string ]: string
 }
 
