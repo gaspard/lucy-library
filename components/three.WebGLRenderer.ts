@@ -1,11 +1,11 @@
-import { Init, Update, Meta } from '../types/lucidity'
-import { environment } from '../types/environment'
+import { Init, Update, Meta } from 'lucidity'
+import { Screen } from 'lucy'
 
 export const init: Init =
 ( { require, cache, detached } ) => {
   const THREE = require ( 'THREE' )
   const container = document.getElementById ( 'screen' )
-  const screen: environment.Screen = container.getBoundingClientRect ()
+  const screen: Screen = container.getBoundingClientRect ()
 
   if ( !cache.renderer ) {
     const renderer = new THREE.WebGLRenderer ( { antialias: true } )
@@ -43,6 +43,6 @@ export const meta: Meta =
 , provide:
   { renderer: 'THREE.WebGLRenderer'
   , camera: 'THREE.Camera'
-  , screen: 'environment.Screen'
+  , screen: 'lucy.Screen'
   }
 }

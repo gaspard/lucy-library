@@ -1,4 +1,4 @@
-import { Init, Update, Meta } from '../types/lucidity'
+import { Init, Update, Meta } from 'lucidity'
 
 export const update: Update =
 (): number => {

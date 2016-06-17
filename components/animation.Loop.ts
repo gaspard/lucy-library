@@ -1,14 +1,13 @@
-import { Init, Update, Meta } from '../types/lucidity'
-import { animation } from '../types/animation'
-let time: animation.Time
+import { Init, Update, Meta, Time } from 'lucidity'
+let time: Time
 let loop, updateChildren
 
 export const init: Init =
-( { children, cache } ) => {
+( { context, children, cache } ) => {
   updateChildren = children.all
 
   if ( !cache.time ) {
-    const time: animation.Time =
+    const time: Time =
     { now: performance.now () / 1000, dt: 0 }
     cache.time = time
     requestAnimationFrame ( () => cache.animation () )
@@ -44,6 +43,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidogen.io>'
 , origin: 'lucidity.io/animation.Loop'
 , version: '1.0'
-, provide: { time: 'animation.Time' }
+, provide: { time: 'lucy.Time' }
 , children: 'all' // special case where we handle children ourselves but do not type them.
 }

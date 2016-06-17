@@ -1,4 +1,4 @@
-import { Init, Update, Meta } from '../types/lucidity'
+import { Init, Update, Meta } from 'lucidity'
 let object3d
 
 export const init: Init =

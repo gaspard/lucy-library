@@ -1,4 +1,4 @@
-import { Init, Update, Meta } from '../types/lucidity'
+import { Init, Update, Meta } from 'lucidity'
 let render, camera, childrenUpdate, object3d
 
 export const init: Init =

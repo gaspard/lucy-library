@@ -1,10 +1,13 @@
-import { Init, Update, Meta } from '../types/lucidity'
+import { Init, Update, Meta } from 'lucidity'
 let rotation, value
 
 export const init: Init =
-( { context, children, cache } ) => {
+( { context, children, cache, detached } ) => {
   value = children [ 0 ]
   rotation = context.object3d.rotation
+  if ( detached ) {
+    rotation.x = 0
+  }
 }
 
 const PI2 = Math.PI * 2

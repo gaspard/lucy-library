@@ -1,12 +1,12 @@
-import { Init, Update, Meta } from '../types/lucidity'
-import { State } from '../types/midi'
+import { Init, Update, Meta } from 'lucidity'
+import { Midi } from 'lucy'
 let velocities
 const channel = 1
 const note = 60
 
 export const init: Init =
 ( { context } ) => {
-  const midi: State = context.midi
+  const midi: Midi = context.midi
   velocities = midi.note [ channel ]
 }
 
@@ -22,6 +22,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
 , origin: 'lucidity.io/mid.Note'
 , version: '1.0'
-, expect: { time: 'midi.State' }
+, expect: { midi: 'lucy.Midi' }
 , update: '(): number'
 }

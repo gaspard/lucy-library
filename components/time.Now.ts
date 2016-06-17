@@ -1,5 +1,6 @@
-import { Init, Update, Meta } from '../types/lucidity'
-let time
+import { Init, Update, Meta } from 'lucidity'
+import { Time } from 'lucy'
+let time: Time
 
 export const init: Init =
 ( { context } ) => {
@@ -17,6 +18,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
 , origin: 'lucidity.io/time.Now'
 , version: '1.0'
-, expect: { time: 'animation.Time' }
+, expect: { time: 'lucy.Time' }
 , update: '(): number'
 }
