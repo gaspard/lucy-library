@@ -1,5 +1,4 @@
-import { Init, Update, Meta } from 'lucidity'
-import { Midi } from 'lucy'
+import { Init, Update, Meta, Midi } from 'lucidity'
 let velocities
 const channel = 1
 const note = 60

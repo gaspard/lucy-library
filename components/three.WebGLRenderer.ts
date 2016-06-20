@@ -1,5 +1,4 @@
-import { Init, Update, Meta } from 'lucidity'
-import { Screen } from 'lucy'
+import { Init, Update, Meta, Screen } from 'lucidity'
 
 export const init: Init =
 ( { require, cache, detached } ) => {

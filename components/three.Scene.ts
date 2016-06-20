@@ -1,9 +1,9 @@
 import { Init, Update, Meta } from 'lucidity'
-let render, camera, childrenUpdate, object3d
+let renderer, camera, childrenUpdate, object3d
 
 export const init: Init =
 ( { context, require, children, cache } ) => {
-  render = context.renderer.render
+  renderer = context.renderer
   camera = context.camera
   childrenUpdate = children.all
 
@@ -19,7 +19,7 @@ export const init: Init =
 export const update: Update =
 () => {
   childrenUpdate ()
-  render ( object3d, camera )
+  renderer.render ( object3d, camera )
 }
 
 export const meta: Meta =

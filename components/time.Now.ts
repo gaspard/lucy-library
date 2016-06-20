@@ -1,5 +1,4 @@
-import { Init, Update, Meta } from 'lucidity'
-import { Time } from 'lucy'
+import { Init, Update, Meta, Time } from 'lucidity'
 let time: Time
 
 export const init: Init =

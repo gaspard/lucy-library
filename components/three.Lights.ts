@@ -19,6 +19,8 @@ export const init: Init =
     l = new THREE.PointLight ( 0xffffff, 1, 0 )
     l.position.set ( -10, -20, -10 )
     lights.add ( l )
+    
+    context.object3d.add ( cache.object3d )
   }
 
   const object3d = cache.object3d
@@ -27,6 +29,7 @@ export const init: Init =
       object3d.parent.remove ( object3d )
     }
   }
+
   return { object3d }
 }
 
