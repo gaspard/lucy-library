@@ -1,6 +1,3 @@
-// This does not work no idea how to import type from another module file.
-// :-(
-// import { Midi as MidiState } from 'lucy'
 
 declare module 'lucidity' {
 
@@ -79,7 +76,7 @@ declare module 'lucidity' {
     require?: Require
   }
 
-  interface ContextType {
+  interface StringMap {
     [ key: string ]: string
   }
 
@@ -91,8 +88,8 @@ declare module 'lucidity' {
     origin: string
     version: string
     // end mandatory
-    expect?: ContextType
-    provide?: ContextType
+    expect?: StringMap
+    provide?: StringMap
     children?: string[] | 'all'
     update?: string
   }
