@@ -42,6 +42,8 @@ We use [meta.expect](meta.md#expect) and [meta.provide](meta.md#provide) to ensu
 
 ## control
 
+This might be removed.
+
 See [control](control.md)
 
 ## require
@@ -49,6 +51,10 @@ See [control](control.md)
 This works the same as Node.js `require` function and lets you load external libraries. If the library is not available in memory, this function call will interrupt the init function and ask the user for the missing library.
 
 Example: [3D.renderer](../components/3D.renderer.ts#L3)
+
+## asset
+
+Async import new asset content. See [asset](asset.md)
 
 ## children
 

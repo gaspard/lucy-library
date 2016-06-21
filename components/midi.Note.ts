@@ -21,6 +21,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
 , origin: 'lucidity.io/mid.Note'
 , version: '1.0'
-, expect: { midi: 'lucy.Midi' }
+, expect: { midi: 'lucidity.Midi' }
 , update: '(): number'
 }

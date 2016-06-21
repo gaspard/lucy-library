@@ -42,6 +42,6 @@ export const meta: Meta =
 , provide:
   { renderer: 'THREE.WebGLRenderer'
   , camera: 'THREE.Camera'
-  , screen: 'lucy.Screen'
+  , screen: 'lucidity.Screen'
   }
 }

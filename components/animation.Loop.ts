@@ -43,6 +43,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidogen.io>'
 , origin: 'lucidity.io/animation.Loop'
 , version: '1.0'
-, provide: { time: 'lucy.Time' }
+, provide: { time: 'lucidity.Time' }
 , children: 'all' // special case where we handle children ourselves but do not type them.
 }

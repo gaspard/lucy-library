@@ -17,6 +17,6 @@ export const meta: Meta =
 , author: 'Gaspard Bucher <gaspard@lucidity.io>'
 , origin: 'lucidity.io/time.Now'
 , version: '1.0'
-, expect: { time: 'lucy.Time' }
+, expect: { time: 'lucidity.Time' }
 , update: '(): number'
 }
